@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassCapaEntidades\ClassCapaEntidades.csproj">
+      <Project>{953c7a8f-a8c8-478b-a0b3-ae666c6d869a}</Project>
+      <Name>ClassCapaEntidades</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClasscCapaDatos\ClasscCapaDatos.csproj">
       <Project>{739731e6-5e43-4cc7-befe-b466ec64efb9}</Project>
       <Name>ClasscCapaDatos</Name>

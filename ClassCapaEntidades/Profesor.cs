@@ -8,15 +8,15 @@ namespace ClassCapaEntidades
 {
     public class Profesor
     {
-        public int ID_Profe { get; set; }
+        public int Id_Profesor { get; set; }
         public int RegistroEmpleado { get; set; }
         public string Nombre { get; set; }
-        public string Ap_pat { get; set; }
-        public string Ap_Mat { get; set; }
-        public int Genero { get; set; }
-        public int Categoria { get; set; }
+        public string Paterno { get; set; }
+        public string Materno { get; set; }
+        public string Genero { get; set; }
+        public string Categoria { get; set; }
         public string Correo { get; set; }
         public string Celular { get; set; }
-        public int F_EdoCivil { get; set; }
+        public int Id_EdoCivil { get; set; }
     }
 }
