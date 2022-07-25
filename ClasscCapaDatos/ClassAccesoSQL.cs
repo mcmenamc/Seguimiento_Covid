@@ -21,12 +21,13 @@ namespace ClasscCapaDatos
             this.Connection = new SqlConnection(conn_string);
             this.Connection.Open();
         }
-        // 
-        public DataSet QueryDataSet(string querySql, ref string message, List<SqlParameter> listParameter)
+        // Método privado que retorna una DataSet que va depender de cuantos Querys le mandes.
+        public DataSet QueryDataSet(List<string> listQuery, ref string message, List<SqlParameter> listParameter)
         {
             SqlCommand command = null;
             SqlDataAdapter adapter = null;
             DataSet dataSet = new DataSet();
+            OpenConnection();
 
             if (this.Connection == null)
             {
@@ -35,22 +36,26 @@ namespace ClasscCapaDatos
             }
             else
             {
-                command = new SqlCommand(querySql, this.Connection);
-                adapter = new SqlDataAdapter(command);
-
-                foreach (SqlParameter parameter in listParameter)
-                    command.Parameters.Add(parameter);
-
-                try
+                int counter = 1;
+                foreach (string query in listQuery)
                 {
-                    adapter.Fill(dataSet, "Consulta");
-                    message = "El DataSet se lleno";
-                }
-                catch (Exception a)
-                {
-                    message = "Error: " + a.Message;
-                }
+                    command = new SqlCommand(query, this.Connection);
+                    adapter = new SqlDataAdapter(command);
 
+                    foreach (SqlParameter parameter in listParameter)
+                        command.Parameters.Add(parameter);
+
+                    try
+                    {
+                        adapter.Fill(dataSet, "Consulta" + counter);
+                        message = "El DataSet se lleno";
+                    }
+                    catch (Exception a)
+                    {
+                        message = "Error: " + a.Message;
+                    }
+                    counter++;
+                }
                 this.Connection.Close();
                 this.Connection.Dispose();
             }
