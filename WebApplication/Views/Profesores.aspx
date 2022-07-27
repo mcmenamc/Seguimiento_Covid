@@ -122,8 +122,6 @@
                     <label for="ContentPlaceHolder1_TextBoxCelular" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Celular</label>
                 </div>
             </div>
-
-
             <asp:Button ID="Button2" CssClass="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" runat="server" Text="Crear Profesor" OnClick="Button2_Click" />
         </div>
         <div class="hidden p-4 bg-gray-50 rounded-lg" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
@@ -136,7 +134,6 @@
                     <asp:Button ID="Button3" CssClass="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" runat="server" Text="Buscar Profesor" OnClick="Button3_Click" />
                 </div>
             </div>
-
             <div runat="server" id="Datos" class="p-6 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <a href="#">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Profesor</h5>
@@ -165,9 +162,6 @@
                 <asp:TextBox ID="idProfesorE" type="hidden" runat="server"></asp:TextBox>
                 <asp:Button ID="Button4" runat="server" CssClass="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" Text="Eliminar profesor" OnClick="Button4_Click" />
             </div>
-
         </div>
     </div>
-
-
 </asp:Content>
