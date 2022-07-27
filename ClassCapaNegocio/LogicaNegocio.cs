@@ -35,7 +35,28 @@ namespace ClassCapaNegocio
             return bl.QueryDataTable(querySql, ref message, listaParametros);
         }
 
-        public DataTable GetProfesoresContagiados(ref string message, string cuatrimestre, string programa)
+        public DataTable GetTables(int table)
+        {
+            string query = "";
+            string message = "";
+
+            switch (table)
+            {
+                case 0:
+                    query = "SELECT * FROM Profesores";
+                    break;
+                case 1:
+                    query = "SELECT * FROM Alumnos";
+                    break;
+                default:
+                    query = "";
+                    break;
+            }
+            List<SqlParameter> listaParametros = new List<SqlParameter>();
+            return bl.QueryDataTable(query, ref message, listaParametros);
+        }
+
+        public DataTable GetProfesoresContagiados(ref string message, int cuatrimestre, int programa)
         {
             List<SqlParameter> listaParametros = new List<SqlParameter>();
             listaParametros.Add(new SqlParameter("cuatri", cuatrimestre));
@@ -50,14 +71,16 @@ namespace ClassCapaNegocio
                 MAX(Profesores.Correo) AS Correo,
                 MAX(PositivoProfesores.FechaContagio) AS  'Fecha de Contagio' ,
                 AVG(PositivoProfesores.NumeroContagios) AS 'Veces Contagiadas',
-                MAX(GrupoCuatrimestres.Turno) AS 'Turno'
+                MAX(GrupoCuatrimestres.Turno) AS 'Turno',
+                MIN(ProgramaEducativos.Programa) as 'programa',
+                MIN(Cuatrimestres.Periodo) as 'periodo'
                 FROM PositivoProfesores
                 INNER JOIN Profesores ON(Profesores.Id_Profesor = PositivoProfesores.Id_Profesor)
                 INNER JOIN ProfesoresGrupos ON(Profesores.Id_Profesor = ProfesoresGrupos.Id_Profesor)
                 INNER JOIN GrupoCuatrimestres ON(GrupoCuatrimestres.Id_Cuatrimestre = ProfesoresGrupos.Id_GrupoCuatrimestre)
                 INNER JOIN Cuatrimestres ON(Cuatrimestres.Id_Cuatrimestre = GrupoCuatrimestres.Id_Cuatrimestre)
                 INNER JOIN ProgramaEducativos ON(ProgramaEducativos.Id_programaEducativo = GrupoCuatrimestres.Id_programaEducativo)
-                WHERE Cuatrimestres.Periodo = @cuatri AND ProgramaEducativos.Programa = @programa
+                WHERE ProgramaEducativos.Id_programaEducativo = @programa AND Cuatrimestres.Id_Cuatrimestre = @cuatri
                 GROUP BY Profesores.Id_Profesor
             ";
             return bl.QueryDataTable(querySql, ref message, listaParametros);
@@ -99,6 +122,28 @@ namespace ClassCapaNegocio
             result = bl.modification(query, ref mensaje, listParameter);
             return result;
         }
+        public DataTable GetProfesor(int id, Boolean flag)
+        {
+            DataTable result = new DataTable();
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = "";
+            string message = "";
+            if (flag)
+                query = "SELECT * FROM Profesores WHERE Id_Profesor = @id ";
+            else
+                query = "SELECT * FROM Profesores WHERE RegistroEmpleado = @id ";
+            return bl.QueryDataTable(query, ref message, listParameter);
+        }
 
+        public Boolean DeleteProfesor(int id)
+        {
+            string message = "";
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("id", id));
+            string query = "DELETE FROM Profesores WHERE Id_Profesor = @id";
+            return bl.modification(query, ref message, listParameter);
+
+        }
     }
 }

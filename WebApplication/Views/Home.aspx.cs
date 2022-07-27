@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,9 +10,11 @@ namespace WebApplication.Views
 {
     public partial class Home : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
+
+
     }
 }

@@ -67,11 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Css\main.css" />
     <Content Include="images\favicon.ico" />
     <Content Include="images\logo.png" />
-    <Content Include="Views\ProfeContagiado.aspx" />
     <Content Include="Views\Home.aspx" />
-    <Content Include="Views\Profesor.aspx" />
     <Content Include="Views\Profesores.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -84,26 +83,12 @@
       <DependentUpon>Page.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\ProfeContagiado.aspx.cs">
-      <DependentUpon>ProfeContagiado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ProfeContagiado.aspx.designer.cs">
-      <DependentUpon>ProfeContagiado.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Profesor.aspx.cs">
-      <DependentUpon>Profesor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Profesor.aspx.designer.cs">
-      <DependentUpon>Profesor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Profesores.aspx.cs">
       <DependentUpon>Profesores.aspx</DependentUpon>
@@ -114,6 +99,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\loader.gif" />
     <None Include="packages.config" />
     <Content Include="Page.Master" />
     <None Include="Web.Debug.config">

@@ -8,8 +8,12 @@
     <title>Seguimiento Covid</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link href="Css/main.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -26,8 +30,10 @@
         }
     </script>
 </head>
-<body class="bg-blue-50">
-
+<body class="">
+    <div class="preloader">
+        <img class="preloader-icon" src="../images/loader.gif" alt="My Site Preloader">
+    </div>
     <div class="flex flex-col h-screen justify-between">
         <nav class="px-2 bg-white border-gray-200 bg-gray-900 border-gray-700 ">
             <div class="container flex flex-wrap justify-between items-center mx-auto">
@@ -58,6 +64,7 @@
             </div>
         </nav>
 
+
         <main class="container mx-auto px-4">
             <form id="form1" runat="server">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -85,5 +92,9 @@
         </footer>
     </div>
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <script type="text/javascript">
+        window.onload = function () { document.querySelector(".preloader").style.display = "none"; }
+    </script>
 </body>
 </html>
