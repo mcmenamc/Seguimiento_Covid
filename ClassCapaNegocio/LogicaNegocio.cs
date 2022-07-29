@@ -14,10 +14,7 @@ namespace ClassCapaNegocio
     {
         private ClassAccesoSQL bl = new ClassAccesoSQL();
 
-        public DataTable queryInsert(string querySql, ref string mensaje, List<SqlParameter> listaParametros)
-        {
-            return bl.QueryDataTable(querySql, ref mensaje, listaParametros);
-        }
+
 
         public DataTable GetProfesores(ref string message)
         {
@@ -43,7 +40,15 @@ namespace ClassCapaNegocio
             switch (table)
             {
                 case 0:
-                    query = "SELECT * FROM Profesores";
+                    query = @"SELECT
+                    Profesores.RegistroEmpleado AS 'Registro Empleado',
+                    CONCAT(Profesores.Nombre + ' ', Profesores.Paterno + ' ', Profesores.Materno) AS 'Nombre Completo',
+                    Profesores.Genero,
+                    Profesores.Categoria,
+                    Profesores.Correo,
+                    Profesores.Celular,
+                    EdoCivil.Nombre AS 'Estado Civil'
+                    FROM Profesores INNER JOIN EdoCivil ON (EdoCivil.Id_EdoCivil = Profesores.Id_EdoCivil)";
                     break;
                 case 1:
                     query = "SELECT * FROM Alumnos";
@@ -145,5 +150,86 @@ namespace ClassCapaNegocio
             return bl.modification(query, ref message, listParameter);
 
         }
+        public DataTable GetAlumnosContagiados(int educativo, int cuatri)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@educativo", educativo));
+            listParameter.Add(new SqlParameter("@cuatri", cuatri));
+            string message = "";
+            string query = @"SELECT
+            MAX(Alumnos.Id_Alumno) AS 'Id_Profesor',
+            MAX(PositivoAlumnos.Id_Alumno) AS Id_PositivoProfesor,
+            CONCAT(MAX(Alumnos.Nombre) + ' ', MAX(Alumnos.Paterno) + ' ', MAX(Alumnos.Materno)) AS 'Nombre Completo',
+            MAX(Alumnos.Genero) AS Genero,
+            MAX(Alumnos.Correo) AS Correo,
+            MAX(PositivoAlumnos.FechaContagio) AS  'Fecha de Contagio' ,
+            AVG(PositivoAlumnos.NumeroContagios) AS 'Veces Contagiadas',
+            MAX(GrupoCuatrimestres.Turno) AS 'Turno',
+            MIN(ProgramaEducativos.Programa) as 'programa',
+            MIN(Cuatrimestres.Periodo) as 'periodo'
+            FROM Alumnos
+            INNER JOIN PositivoAlumnos ON(Alumnos.Id_Alumno = PositivoAlumnos.Id_Alumno)
+            INNER JOIN AlumnosGrupo ON(AlumnosGrupo.Id_Alumno = Alumnos.Id_Alumno)
+            INNER JOIN GrupoCuatrimestres ON(GrupoCuatrimestres.Id_Cuatrimestre = AlumnosGrupo.Id_AlumnoGrupo)
+            INNER JOIN Cuatrimestres ON(Cuatrimestres.Id_Cuatrimestre = GrupoCuatrimestres.Id_Cuatrimestre)
+            INNER JOIN ProgramaEducativos ON(ProgramaEducativos.Id_programaEducativo = GrupoCuatrimestres.Id_programaEducativo)
+            WHERE ProgramaEducativos.Id_programaEducativo = @educativo AND Cuatrimestres.Id_Cuatrimestre = @cuatri
+            GROUP BY Alumnos.Id_Alumno";
+            return bl.QueryDataTable(query, ref message, listParameter);
+        }
+
+        public DataTable GetAlumno(string id)
+        {
+            DataTable result = new DataTable();
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string message = "";
+
+            string query = @"SELECT
+            Alumnos.Id_Alumno,
+            Alumnos.Matricula, 
+            Alumnos.Nombre, 
+            Alumnos.Paterno,
+            Alumnos.Materno,
+            Alumnos.Genero,
+            Alumnos.Correo,
+            Alumnos.Celular,
+            EdoCivil.Nombre AS Civil
+            FROM Alumnos
+            INNER JOIN EdoCivil ON(EdoCivil.Id_EdoCivil = Alumnos.Id_EdoCivil)
+            WHERE Matricula = @id";
+            return bl.QueryDataTable(query, ref message, listParameter);
+        }
+        public Boolean CreateAlumno(Alumnos nuevo)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@matricula", nuevo.Matricula));
+            listParameter.Add(new SqlParameter("@nombre", nuevo.Nombre));
+            listParameter.Add(new SqlParameter("@paterno", nuevo.Paterno));
+            listParameter.Add(new SqlParameter("@materno", nuevo.Materno));
+            listParameter.Add(new SqlParameter("@genero", nuevo.Genero));
+            listParameter.Add(new SqlParameter("@correo", nuevo.Correo));
+            listParameter.Add(new SqlParameter("@celular", nuevo.Celular));
+            listParameter.Add(new SqlParameter("@id_civil", nuevo.Id_EdoCivil));
+            string query = @"
+                INSERT INTO Alumnos(Matricula, Nombre, Paterno, Materno, Genero, Correo, Celular, Id_EdoCivil)
+                VALUES(@matricula, @nombre, @paterno, @materno, @genero, @correo, @celular, @id_civil)
+            ";
+            string mensaje = "";
+            return bl.modification(query, ref mensaje, listParameter);
+        }
+        public Boolean DeleteAlumno(string id)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = @"
+                DELETE FROM Alumnos WHERE Matricula = @id
+            ";
+            string mesage = "";
+            return bl.modification(query, ref mesage, listParameter);
+        }
+
+
+
     }
 }

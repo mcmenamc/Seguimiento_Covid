@@ -78,8 +78,13 @@
     <Content Include="images\profesores.png" />
     <Content Include="images\tecnico.png" />
     <Content Include="Views\Alumnos.aspx" />
+    <Content Include="Views\Carreras.aspx" />
+    <Content Include="Views\Cuatrimestres.aspx" />
+    <Content Include="Views\EstadoCivil.aspx" />
     <Content Include="Views\Home.aspx" />
+    <Content Include="Views\Medicos.aspx" />
     <Content Include="Views\Profesores.aspx" />
+    <Content Include="Views\ProgramaEducativo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +103,27 @@
     <Compile Include="Views\Alumnos.aspx.designer.cs">
       <DependentUpon>Alumnos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Carreras.aspx.cs">
+      <DependentUpon>Carreras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Carreras.aspx.designer.cs">
+      <DependentUpon>Carreras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cuatrimestres.aspx.cs">
+      <DependentUpon>Cuatrimestres.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cuatrimestres.aspx.designer.cs">
+      <DependentUpon>Cuatrimestres.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EstadoCivil.aspx.cs">
+      <DependentUpon>EstadoCivil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\EstadoCivil.aspx.designer.cs">
+      <DependentUpon>EstadoCivil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,12 +131,26 @@
     <Compile Include="Views\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\Medicos.aspx.cs">
+      <DependentUpon>Medicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Medicos.aspx.designer.cs">
+      <DependentUpon>Medicos.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Profesores.aspx.cs">
       <DependentUpon>Profesores.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Profesores.aspx.designer.cs">
       <DependentUpon>Profesores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProgramaEducativo.aspx.cs">
+      <DependentUpon>ProgramaEducativo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ProgramaEducativo.aspx.designer.cs">
+      <DependentUpon>ProgramaEducativo.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

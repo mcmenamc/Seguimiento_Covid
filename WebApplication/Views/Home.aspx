@@ -14,7 +14,7 @@
                     <span class="block xl:inline">Bienvenido al Sistema </span>
                     <span class="block text-indigo-600 xl:inline">Control Covid-19</span>
                 </h1>
-                <p class="mt-3 text-base text-gray-500  sm:mx-auto md:mt-5 md:text-xl lg:mx-0"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  </p>
+                <p class="mt-3 text-base text-gray-500  sm:mx-auto md:mt-5 md:text-xl lg:mx-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  </p>
             </div>
 
             <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
@@ -61,11 +61,8 @@
                     </div>
                     <p class="mt-1 text-lg font-medium text-gray-900">Programa Educativo</p>
                 </a>
-
             </div>
         </div>
     </div>
-
-
 
 </asp:Content>

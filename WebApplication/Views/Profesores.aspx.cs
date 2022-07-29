@@ -13,7 +13,7 @@ namespace WebApplication.Views
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        LogicaNegocio bl = new LogicaNegocio();
+        private LogicaNegocio bl = new LogicaNegocio();
 
         protected void Page_Load(object sender, EventArgs e)
         {
