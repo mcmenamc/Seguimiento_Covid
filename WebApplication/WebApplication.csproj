@@ -81,6 +81,7 @@
     <Content Include="Views\Carreras.aspx" />
     <Content Include="Views\Cuatrimestres.aspx" />
     <Content Include="Views\EstadoCivil.aspx" />
+    <Content Include="Views\GrupoCuatrimestre.aspx" />
     <Content Include="Views\Home.aspx" />
     <Content Include="Views\Medicos.aspx" />
     <Content Include="Views\Profesores.aspx" />
@@ -123,6 +124,13 @@
     </Compile>
     <Compile Include="Views\EstadoCivil.aspx.designer.cs">
       <DependentUpon>EstadoCivil.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GrupoCuatrimestre.aspx.cs">
+      <DependentUpon>GrupoCuatrimestre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GrupoCuatrimestre.aspx.designer.cs">
+      <DependentUpon>GrupoCuatrimestre.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>

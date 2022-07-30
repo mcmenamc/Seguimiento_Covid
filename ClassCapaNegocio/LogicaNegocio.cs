@@ -53,6 +53,33 @@ namespace ClassCapaNegocio
                 case 1:
                     query = "SELECT * FROM Alumnos";
                     break;
+                case 2:
+                    query = @"SELECT 
+                    Cuatrimestres.Id_Cuatrimestre AS 'Identificador',
+                    Cuatrimestres.Periodo AS 'Periodo',
+                    Cuatrimestres.Inicio AS 'Inicio del cuatrimestre',
+                    Cuatrimestres.Fin AS 'Fin del Cuatrimestre',
+                    Cuatrimestres.Anio AS 'Año del Cuatrimestre'
+                    FROM Cuatrimestres";
+                    break;
+                case 3:
+                    query = @"
+                    SELECT
+                    GrupoCuatrimestres.Id_GrupoCuatrimestre,
+                    GrupoCuatrimestres.Turno,
+                    GrupoCuatrimestres.Modaliodad,
+                    Cuatrimestres.Periodo,
+                    ProgramaEducativos.Programa,
+                    Carreras.Carrera,
+                    Grupos.Grado,
+                    Grupos.Letra
+                    FROM GrupoCuatrimestres
+                    INNER JOIN Cuatrimestres ON(Cuatrimestres.Id_Cuatrimestre = GrupoCuatrimestres.Id_Cuatrimestre)
+                    INNER JOIN ProgramaEducativos ON(ProgramaEducativos.Id_programaEducativo = GrupoCuatrimestres.Id_programaEducativo)
+                    INNER JOIN Carreras ON(Carreras.Id_Carrera = ProgramaEducativos.Id_Carrera)
+                    INNER JOIN Grupos ON(Grupos.Id_Grupo = GrupoCuatrimestres.Id_Grupo)
+                    ";
+                    break;
                 default:
                     query = "";
                     break;
@@ -224,6 +251,93 @@ namespace ClassCapaNegocio
             listParameter.Add(new SqlParameter("@id", id));
             string query = @"
                 DELETE FROM Alumnos WHERE Matricula = @id
+            ";
+            string mesage = "";
+            return bl.modification(query, ref mesage, listParameter);
+        }
+        public Boolean CreateCuatrimestre(Cuatrimestre nuevo)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@periodo", nuevo.Periodo));
+            listParameter.Add(new SqlParameter("@inicio", nuevo.Inicio));
+            listParameter.Add(new SqlParameter("@fin", nuevo.Fin));
+            listParameter.Add(new SqlParameter("@anio", nuevo.Anio));
+            string message = "";
+            string query = @"INSERT INTO Cuatrimestres(Periodo, Inicio, Fin, Anio)
+            VALUES (@periodo, @inicio, @fin, @anio)";
+
+            return bl.modification(query, ref query, listParameter);
+        }
+        public DataTable GetCuatrimestre(int id)
+        {
+            DataTable result = new DataTable();
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string message = "";
+            string query = @"SELECT 
+            Cuatrimestres.Id_Cuatrimestre ,
+            Cuatrimestres.Periodo,
+            Cuatrimestres.Inicio ,
+            Cuatrimestres.Fin,
+            Cuatrimestres.Anio
+            FROM Cuatrimestres
+            WHERE Id_Cuatrimestre = @id";
+            return bl.QueryDataTable(query, ref message, listParameter);
+        }
+        public Boolean DeleteCuatrimestre(int id)
+        {
+
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = @"
+                DELETE FROM Cuatrimestres WHERE Id_Cuatrimestre = @id
+            ";
+            string mesage = "";
+            return bl.modification(query, ref mesage, listParameter);
+        }
+        public Boolean CreateGrupoCuatrimestre(GrupoCuatrimestre nuevo)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@turno", nuevo.Turno));
+            listParameter.Add(new SqlParameter("@modalidad", nuevo.Modalidad));
+            listParameter.Add(new SqlParameter("@id_programa", nuevo.Id_programaEducativo));
+            listParameter.Add(new SqlParameter("@id_cuatri", nuevo.Id_Cuatrimestre));
+            listParameter.Add(new SqlParameter("@id_grupo", nuevo.Id_Grupo));
+            string message = "";
+            string query = @"INSERT INTO GrupoCuatrimestres(Turno, Modaliodad, Id_programaEducativo, Id_Cuatrimestre, Id_Grupo)
+            VALUES (@turno, @modalidad, @id_programa, @id_cuatri, @id_grupo)";
+            return bl.modification(query, ref message, listParameter);
+
+        }
+        public DataTable GetGrado_Cuatrimestre(int id)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = @"
+            SELECT
+            GrupoCuatrimestres.Id_GrupoCuatrimestre,
+            GrupoCuatrimestres.Turno,
+            GrupoCuatrimestres.Modaliodad AS Modalidad,
+            Cuatrimestres.Periodo,
+            ProgramaEducativos.Programa,
+            Grupos.Grado,
+            Grupos.Letra
+            FROM GrupoCuatrimestres
+            INNER JOIN Cuatrimestres ON(Cuatrimestres.Id_Cuatrimestre = GrupoCuatrimestres.Id_Cuatrimestre)
+            INNER JOIN ProgramaEducativos ON(ProgramaEducativos.Id_programaEducativo = GrupoCuatrimestres.Id_programaEducativo)
+            INNER JOIN Carreras ON(Carreras.Id_Carrera = ProgramaEducativos.Id_Carrera)
+            INNER JOIN Grupos ON(Grupos.Id_Grupo = GrupoCuatrimestres.Id_Grupo)
+            where GrupoCuatrimestres.Id_GrupoCuatrimestre = @id
+            ";
+            string messager = "";
+            return bl.QueryDataTable(query, ref messager, listParameter);
+        }
+        public Boolean DeleteGrupoCuatrimestre(int id)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = @"
+                DELETE FROM GrupoCuatrimestres WHERE Id_GrupoCuatrimestre = @id
             ";
             string mesage = "";
             return bl.modification(query, ref mesage, listParameter);

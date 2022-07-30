@@ -37,23 +37,17 @@
                     </div>
                     <p class="mt-1 text-lg font-medium text-gray-900">Médicos</p>
                 </a>
-                <a href="#" class="group">
-                    <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                        <img src="../images/pareja.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
-                    </div>
-                    <p class="mt-1 text-lg font-medium text-gray-900">Estado Civil</p>
-                </a>
-                <a href="#" class="group">
+                <a href="Cuatrimestres.aspx" class="group">
                     <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                         <img src="../images/cuatrimestre.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
                     </div>
                     <p class="mt-1 text-lg font-medium text-gray-900">Cuatrimestres</p>
                 </a>
-                <a href="#" class="group">
+                <a href="GrupoCuatrimestre.aspx" class="group">
                     <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                         <img src="../images/carrera.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
                     </div>
-                    <p class="mt-1 text-lg font-medium text-gray-900">Carreras</p>
+                    <p class="mt-1 text-lg font-medium text-gray-900">Grupo Cuatrimestre</p>
                 </a>
                 <a href="#" class="group">
                     <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">

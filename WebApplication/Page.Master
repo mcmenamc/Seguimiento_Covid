@@ -27,7 +27,7 @@
                 }
             },
             darkMode: 'class',
-            
+
         }
     </script>
 </head>
@@ -94,6 +94,7 @@
     </div>
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/datepicker.js"></script>
     <script type="text/javascript">
         window.onload = function () { document.querySelector(".preloader").style.display = "none"; }
     </script>
