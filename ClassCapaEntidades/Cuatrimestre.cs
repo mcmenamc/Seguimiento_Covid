@@ -10,9 +10,8 @@ namespace ClassCapaEntidades
     {
         public int id_Cuatrimestre { get; set; }
         public string Periodo { get; set; }
+        public string Inicio { get; set; }
+        public string Fin { get; set; }
         public int Anio { get; set; }
-        public int Inicio { get; set; }
-        public int Fin { get; set; }
-        public int Extra { get; set; }
     }
 }

@@ -8,11 +8,12 @@ namespace ClassCapaEntidades
 {
     public class GrupoCuatrimestre
     {
-        public int Id_GruCuat { get; set; }
-        public int F_ProgEd { get; set; }
-        public int F_Grupo { get; set; }
+        public int Id_GrupoCuatrimestre { get; set; }
         public string Turno { get; set; }
         public string Modalidad { get; set; }
-        public string Extra { get; set; }
+        public int Id_programaEducativo { get; set; }
+        public int Id_Grupo { get; set; }
+        public int Id_Cuatrimestre { get; set; }
+
     }
 }
