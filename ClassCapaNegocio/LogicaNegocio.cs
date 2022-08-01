@@ -14,8 +14,6 @@ namespace ClassCapaNegocio
     {
         private ClassAccesoSQL bl = new ClassAccesoSQL();
 
-
-
         public DataTable GetProfesores(ref string message)
         {
             List<SqlParameter> listaParametros = new List<SqlParameter>();
@@ -79,6 +77,40 @@ namespace ClassCapaNegocio
                     INNER JOIN Carreras ON(Carreras.Id_Carrera = ProgramaEducativos.Id_Carrera)
                     INNER JOIN Grupos ON(Grupos.Id_Grupo = GrupoCuatrimestres.Id_Grupo)
                     ";
+                    break;
+                case 4:
+                    query = @"
+                    SELECT 
+                    Medicos.Id_Medicos,
+                    Medicos.Nombre,
+                    Medicos.Paterno,
+                    Medicos.Materno,
+                    Medicos.Celular,
+                    Medicos.Correo,
+                    Medicos.Horario,
+                    Medicos.Especialidad,
+                    Medicos.Genero,
+                    EdoCivil.Nombre AS EdoCivil
+                    FROM Medicos
+                    INNER JOIN EdoCivil ON(EdoCivil.Id_EdoCivil = Medicos.Id_EdoCivil)
+                    ";
+                    break;
+                case 5:
+                    query = @"SELECT
+                    Alumnos.Matricula,
+                    Alumnos.Paterno,
+                    Alumnos.Materno,
+                    Alumnos.Nombre,
+                    Alumnos.Genero,
+                    Alumnos.Correo,
+                    Alumnos.Celular,
+                    GrupoCuatrimestres.Modaliodad,
+                    GrupoCuatrimestres.Turno,
+                    Cuatrimestres.Periodo
+                    FROM AlumnosGrupo
+                    INNER JOIN Alumnos ON(Alumnos.Id_Alumno = AlumnosGrupo.Id_Alumno)
+                    INNER JOIN GrupoCuatrimestres ON(GrupoCuatrimestres.Id_GrupoCuatrimestre = AlumnosGrupo.Id_GrupoCuatrimestre)
+                    INNER JOIN Cuatrimestres ON(Cuatrimestres.Id_Cuatrimestre = GrupoCuatrimestres.Id_Cuatrimestre)";
                     break;
                 default:
                     query = "";
@@ -342,8 +374,54 @@ namespace ClassCapaNegocio
             string mesage = "";
             return bl.modification(query, ref mesage, listParameter);
         }
+        public Boolean CreateMedico(Medicos nuevo)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@nombre", nuevo.Nombre));
+            listParameter.Add(new SqlParameter("@paterno", nuevo.Paterno));
+            listParameter.Add(new SqlParameter("@materno", nuevo.Materno));
+            listParameter.Add(new SqlParameter("@correo", nuevo.Correo));
+            listParameter.Add(new SqlParameter("@celular", nuevo.Celular));
+            listParameter.Add(new SqlParameter("@horario", nuevo.Horariio));
+            listParameter.Add(new SqlParameter("@genero", nuevo.Genero));
+            listParameter.Add(new SqlParameter("@especialidad", nuevo.Especialidad));
+            listParameter.Add(new SqlParameter("@civil", nuevo.Id_EdoCivil));
+            string message = "";
+            string query = @"INSERT INTO Medicos(Nombre, Paterno, Materno, Correo, Celular, Horario, Genero, Especialidad, Id_EdoCivil)
+            VALUES (@nombre, @paterno, @materno, @correo, @celular, @horario, @genero, @especialidad, @civil)";
+            return bl.modification(query, ref message, listParameter);
+        }
+        public DataTable GetMedico(int id)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = @"SELECT 
+            Medicos.Id_Medicos,
+            Medicos.Nombre,
+            Medicos.Paterno,
+            Medicos.Materno,
+            Medicos.Celular,
+            Medicos.Correo,
+            Medicos.Horario,
+            Medicos.Especialidad,
+            Medicos.Genero,
+            EdoCivil.Nombre AS EdoCivil
+            FROM Medicos
+            INNER JOIN EdoCivil ON(EdoCivil.Id_EdoCivil = Medicos.Id_EdoCivil)
+            WHERE Id_Medicos = @id
+            ";
+            string message = "";
+            return bl.QueryDataTable(query, ref message, listParameter);
+        }
 
-
-
+        public Boolean DeleteMedicos(int id)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = @"
+            DELETE FROM Medicos WHERE Id_Medicos = @id";
+            string message = "";
+            return bl.modification(query, ref message, listParameter);
+        }
     }
 }

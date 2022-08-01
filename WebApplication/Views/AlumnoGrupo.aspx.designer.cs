@@ -11,7 +11,7 @@ namespace WebApplication.Views
 {
 
 
-    public partial class EstadoCivil
+    public partial class AlumnoGrupo
     {
 
         /// <summary>
@@ -42,76 +42,49 @@ namespace WebApplication.Views
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// Control TextBoxMatricula.
+        /// Control DropDownListModalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxMatricula;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListModalidad;
 
         /// <summary>
-        /// Control TextBoxNombre.
+        /// Control DropDownListTurno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxNombre;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListTurno;
 
         /// <summary>
-        /// Control TextBoxPaterno.
+        /// Control DropDownListCuatrimestre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPaterno;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListCuatrimestre;
 
         /// <summary>
-        /// Control TextBoxMaterno.
+        /// Control DropDownListPrograma.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxMaterno;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListPrograma;
 
         /// <summary>
-        /// Control DropDownListGenero.
+        /// Control DropDownListGrupo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListGenero;
-
-        /// <summary>
-        /// Control DropDownListEstadoCivil.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListEstadoCivil;
-
-        /// <summary>
-        /// Control TextBoxCorreo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxCorreo;
-
-        /// <summary>
-        /// Control TextBoxCelular.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxCelular;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListGrupo;
 
         /// <summary>
         /// Control Button2.
@@ -150,58 +123,67 @@ namespace WebApplication.Views
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Datos;
 
         /// <summary>
-        /// Control Ncompleto.
+        /// Control Turno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Ncompleto;
+        protected global::System.Web.UI.WebControls.Label Turno;
 
         /// <summary>
-        /// Control Correo.
+        /// Control Modalidad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Correo;
+        protected global::System.Web.UI.WebControls.Label Modalidad;
 
         /// <summary>
-        /// Control Telefono.
+        /// Control Periodo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Telefono;
+        protected global::System.Web.UI.WebControls.Label Periodo;
 
         /// <summary>
-        /// Control Genero.
+        /// Control Programa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Genero;
+        protected global::System.Web.UI.WebControls.Label Programa;
 
         /// <summary>
-        /// Control Civil.
+        /// Control Grado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Civil;
+        protected global::System.Web.UI.WebControls.Label Grado;
 
         /// <summary>
-        /// Control MatriculaA.
+        /// Control Letra.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox MatriculaA;
+        protected global::System.Web.UI.WebControls.Label Letra;
+
+        /// <summary>
+        /// Control id.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox id;
 
         /// <summary>
         /// Control Button4.
