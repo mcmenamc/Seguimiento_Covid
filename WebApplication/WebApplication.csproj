@@ -67,19 +67,112 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Css\main.css" />
+    <Content Include="images\carrera.png" />
+    <Content Include="images\cuatrimestre.png" />
+    <Content Include="images\estudiante.png" />
+    <Content Include="images\favicon.ico" />
+    <Content Include="images\logo.png" />
+    <Content Include="images\medico.png" />
+    <Content Include="images\pareja.png" />
+    <Content Include="images\profesores.png" />
+    <Content Include="images\tecnico.png" />
+    <Content Include="Views\AlumnoGrupo.aspx" />
+    <Content Include="Views\Alumnos.aspx" />
+    <Content Include="Views\Cuatrimestres.aspx" />
+    <Content Include="Views\GrupoCuatrimestre.aspx" />
+    <Content Include="Views\Home.aspx" />
+    <Content Include="Views\Medicos.aspx" />
+    <Content Include="Views\Profesores.aspx" />
+    <Content Include="Views\ProgramaEducativo.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Page.Master.cs">
+      <DependentUpon>Page.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Page.Master.designer.cs">
+      <DependentUpon>Page.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AlumnoGrupo.aspx.cs">
+      <DependentUpon>AlumnoGrupo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AlumnoGrupo.aspx.designer.cs">
+      <DependentUpon>AlumnoGrupo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Alumnos.aspx.cs">
+      <DependentUpon>Alumnos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Alumnos.aspx.designer.cs">
+      <DependentUpon>Alumnos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cuatrimestres.aspx.cs">
+      <DependentUpon>Cuatrimestres.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cuatrimestres.aspx.designer.cs">
+      <DependentUpon>Cuatrimestres.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GrupoCuatrimestre.aspx.cs">
+      <DependentUpon>GrupoCuatrimestre.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\GrupoCuatrimestre.aspx.designer.cs">
+      <DependentUpon>GrupoCuatrimestre.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Medicos.aspx.cs">
+      <DependentUpon>Medicos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Medicos.aspx.designer.cs">
+      <DependentUpon>Medicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profesores.aspx.cs">
+      <DependentUpon>Profesores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Profesores.aspx.designer.cs">
+      <DependentUpon>Profesores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProgramaEducativo.aspx.cs">
+      <DependentUpon>ProgramaEducativo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ProgramaEducativo.aspx.designer.cs">
+      <DependentUpon>ProgramaEducativo.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\loader.gif" />
     <None Include="packages.config" />
+    <Content Include="Page.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClassCapaEntidades\ClassCapaEntidades.csproj">
+      <Project>{953c7a8f-a8c8-478b-a0b3-ae666c6d869a}</Project>
+      <Name>ClassCapaEntidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassCapaNegocio\ClassCapaNegocio.csproj">
+      <Project>{ea0f2cb3-49d0-47d6-9d9d-f62d59b7c058}</Project>
+      <Name>ClassCapaNegocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
