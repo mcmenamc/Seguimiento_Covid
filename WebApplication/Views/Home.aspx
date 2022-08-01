@@ -31,7 +31,7 @@
                     </div>
                     <p class="mt-1 text-lg font-medium text-gray-900">Alumnos</p>
                 </a>
-                <a href="#" class="group">
+                <a href="Medicos.aspx" class="group">
                     <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                         <img src="../images/medico.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
                     </div>
@@ -49,11 +49,11 @@
                     </div>
                     <p class="mt-1 text-lg font-medium text-gray-900">Grupo Cuatrimestre</p>
                 </a>
-                <a href="#" class="group">
+                <a href="AlumnoGrupo.aspx" class="group">
                     <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
                         <img src="../images/tecnico.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
                     </div>
-                    <p class="mt-1 text-lg font-medium text-gray-900">Programa Educativo</p>
+                    <p class="mt-1 text-lg font-medium text-gray-900">Alumno Grupo</p>
                 </a>
             </div>
         </div>

@@ -77,10 +77,9 @@
     <Content Include="images\pareja.png" />
     <Content Include="images\profesores.png" />
     <Content Include="images\tecnico.png" />
+    <Content Include="Views\AlumnoGrupo.aspx" />
     <Content Include="Views\Alumnos.aspx" />
-    <Content Include="Views\Carreras.aspx" />
     <Content Include="Views\Cuatrimestres.aspx" />
-    <Content Include="Views\EstadoCivil.aspx" />
     <Content Include="Views\GrupoCuatrimestre.aspx" />
     <Content Include="Views\Home.aspx" />
     <Content Include="Views\Medicos.aspx" />
@@ -97,6 +96,13 @@
       <DependentUpon>Page.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AlumnoGrupo.aspx.cs">
+      <DependentUpon>AlumnoGrupo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AlumnoGrupo.aspx.designer.cs">
+      <DependentUpon>AlumnoGrupo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Alumnos.aspx.cs">
       <DependentUpon>Alumnos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -104,26 +110,12 @@
     <Compile Include="Views\Alumnos.aspx.designer.cs">
       <DependentUpon>Alumnos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\Carreras.aspx.cs">
-      <DependentUpon>Carreras.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Carreras.aspx.designer.cs">
-      <DependentUpon>Carreras.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Views\Cuatrimestres.aspx.cs">
       <DependentUpon>Cuatrimestres.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\Cuatrimestres.aspx.designer.cs">
       <DependentUpon>Cuatrimestres.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\EstadoCivil.aspx.cs">
-      <DependentUpon>EstadoCivil.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\EstadoCivil.aspx.designer.cs">
-      <DependentUpon>EstadoCivil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\GrupoCuatrimestre.aspx.cs">
       <DependentUpon>GrupoCuatrimestre.aspx</DependentUpon>

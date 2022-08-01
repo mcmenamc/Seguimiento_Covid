@@ -45,6 +45,7 @@
     <Compile Include="Alumnos.cs" />
     <Compile Include="Cuatrimestre.cs" />
     <Compile Include="GrupoCuatrimestre.cs" />
+    <Compile Include="Medicos.cs" />
     <Compile Include="PositivoAlumno.cs" />
     <Compile Include="positivoProfe.cs" />
     <Compile Include="ProfeGRupo.cs" />
