@@ -50,7 +50,15 @@ namespace ClassCapaNegocio
                     FROM Profesores INNER JOIN EdoCivil ON (EdoCivil.Id_EdoCivil = Profesores.Id_EdoCivil)";
                     break;
                 case 1:
-                    query = "SELECT * FROM Alumnos";
+                    query = @"SELECT
+                    Alumnos.Id_Alumno,
+                    Alumnos.Materno as 'MATRICULA',
+                    CONCAT(Alumnos.Nombre + '' , Alumnos.Paterno + '' , Alumnos.Materno) AS 'Nombre Completo',
+                    Alumnos.Genero,
+                    Alumnos.Correo,
+                    Alumnos.Celular,
+                    EdoCivil.Nombre as 'Estado Civil'
+                    FROM Alumnos INNER JOIN EdoCivil on (EdoCivil.Id_EdoCivil = Alumnos.Id_Alumno)";
                     break;
                 case 2:
                     query = @"SELECT 
@@ -139,8 +147,8 @@ namespace ClassCapaNegocio
                     Alumnos.Paterno,
                     Alumnos.Materno,
                     Alumnos.Matricula,
-                    Comprobaciones.Nombre,
-                    NivelRiesgos.Nombre,
+                    Comprobaciones.Nombre AS 'Comprobación',
+                    NivelRiesgos.Nombre AS 'RIESGO',
                     NivelRiesgos.Descipcion,
                     PositivoAlumnos.FechaContagio,
                     PositivoAlumnos.Antecedentes,
@@ -412,6 +420,21 @@ namespace ClassCapaNegocio
             string query = @"INSERT INTO PositivoProfesores VALUES(@FechaContagio, @Antecedentes, @NumeroContagios, @PruebaContagio, @Id_NivelRiesgo, @Id_Profesor, @Id_Comprobacion)";
             return bl.modification(query, ref message, listParameter);
         }
+
+        public Boolean CreatePositivoAlumno(PositivoAlumno nuevo)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@FechaContagio", nuevo.FechaConfirmado));
+            listParameter.Add(new SqlParameter("@Antecedentes", nuevo.Antecedentes));
+            listParameter.Add(new SqlParameter("@NumeroContagios", nuevo.NumContagio));
+            listParameter.Add(new SqlParameter("@PruebaContagio", nuevo.PruebaContagio));
+            listParameter.Add(new SqlParameter("@Id_NivelRiesgo", nuevo.Id_NivelRiesgo));
+            listParameter.Add(new SqlParameter("@Id_Alumno", nuevo.Id_Alumno));
+            listParameter.Add(new SqlParameter("@Id_Comprobacion", nuevo.Id_Comprobacion));
+            string message = "";
+            string query = @"insert into PositivoAlumnos values(@FechaContagio, @Antecedentes, @NumeroContagios, @PruebaContagio, @Id_NivelRiesgo, @Id_Alumno, @Id_Comprobacion)";
+            return bl.modification(query, ref message, listParameter);
+        }
         public DataTable GetGrado_Cuatrimestre(int id)
         {
             List<SqlParameter> listParameter = new List<SqlParameter>();
@@ -462,6 +485,33 @@ namespace ClassCapaNegocio
             string messager = "";
             return bl.QueryDataTable(query, ref messager, listParameter);
         }
+        public DataTable getPositivo_Alumno(int id)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = @"
+            SELECT
+            PositivoAlumnos.Id_PositivoAlumno,
+            Alumnos.Nombre,
+            Alumnos.Paterno,
+            Alumnos.Materno,
+            Alumnos.Matricula,
+            Comprobaciones.Nombre AS 'Comprobación',
+            NivelRiesgos.Nombre AS 'RIESGO',
+            NivelRiesgos.Descipcion,
+            PositivoAlumnos.FechaContagio,
+            PositivoAlumnos.Antecedentes,
+            PositivoAlumnos.NumeroContagios,
+            PositivoAlumnos.PruebaContagio
+            FROM PositivoAlumnos
+            INNER JOIN NivelRiesgos ON (NivelRiesgos.Id_NivelRiesgo = PositivoAlumnos.Id_NivelRiesgo)
+            INNER JOIN Comprobaciones ON (Comprobaciones.Id_Comprobacion = PositivoAlumnos.Id_Comprobacion)
+            INNER JOIN Alumnos ON (Alumnos.Id_Alumno = PositivoAlumnos.Id_Alumno)
+            WHERE Id_PositivoAlumno = @id
+            ";
+            string messager = "";
+            return bl.QueryDataTable(query, ref messager, listParameter);
+        }
         public Boolean DeleteGrupoCuatrimestre(int id)
         {
             List<SqlParameter> listParameter = new List<SqlParameter>();
@@ -482,6 +532,17 @@ namespace ClassCapaNegocio
             string mesage = "";
             return bl.modification(query, ref mesage, listParameter);
         }
+        public Boolean DeleteAlumnoPositivo(int id)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = @"
+                DELETE FROM PositivoAlumnos where Id_PositivoAlumno = @id;
+            ";
+            string mesage = "";
+            return bl.modification(query, ref mesage, listParameter);
+        }
+
         public Boolean CreateMedico(Medicos nuevo)
         {
             List<SqlParameter> listParameter = new List<SqlParameter>();

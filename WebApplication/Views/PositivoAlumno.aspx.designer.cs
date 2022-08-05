@@ -42,49 +42,67 @@ namespace WebApplication.Views
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// Control DropDownListModalidad.
+        /// Control DropDownListAlumno.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListModalidad;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListAlumno;
 
         /// <summary>
-        /// Control DropDownListTurno.
+        /// Control DropDownListRiesgo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListTurno;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListRiesgo;
 
         /// <summary>
-        /// Control DropDownListCuatrimestre.
+        /// Control DropDownListComprobacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListCuatrimestre;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListComprobacion;
 
         /// <summary>
-        /// Control DropDownListPrograma.
+        /// Control TextBoxAntecedentes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListPrograma;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxAntecedentes;
 
         /// <summary>
-        /// Control DropDownListGrupo.
+        /// Control TextBoxNumeroContagio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListGrupo;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxNumeroContagio;
+
+        /// <summary>
+        /// Control PruebaContagio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload PruebaContagio;
+
+        /// <summary>
+        /// Control FechaContagio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox FechaContagio;
 
         /// <summary>
         /// Control Button2.
@@ -123,58 +141,49 @@ namespace WebApplication.Views
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Datos;
 
         /// <summary>
-        /// Control Turno.
+        /// Control Nombre_Completo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Turno;
+        protected global::System.Web.UI.WebControls.Label Nombre_Completo;
 
         /// <summary>
-        /// Control Modalidad.
+        /// Control Fecha_Contagio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Modalidad;
+        protected global::System.Web.UI.WebControls.Label Fecha_Contagio;
 
         /// <summary>
-        /// Control Periodo.
+        /// Control Num_contagio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Periodo;
+        protected global::System.Web.UI.WebControls.Label Num_contagio;
 
         /// <summary>
-        /// Control Programa.
+        /// Control NombreRiesgo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Programa;
+        protected global::System.Web.UI.WebControls.Label NombreRiesgo;
 
         /// <summary>
-        /// Control Grado.
+        /// Control NomComprobacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Grado;
-
-        /// <summary>
-        /// Control Letra.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Letra;
+        protected global::System.Web.UI.WebControls.Label NomComprobacion;
 
         /// <summary>
         /// Control id.
