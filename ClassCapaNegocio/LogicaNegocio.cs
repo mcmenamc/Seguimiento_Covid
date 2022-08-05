@@ -131,7 +131,7 @@ namespace ClassCapaNegocio
                     INNER JOIN NivelRiesgos ON (NivelRiesgos.Id_NivelRiesgo = PositivoProfesores.Id_NivelRiesgo)
                     INNER JOIN Comprobaciones ON (Comprobaciones.Id_Comprobacion = PositivoProfesores.Id_Comprobacion)
                     INNER JOIN Profesores ON (Profesores.Id_Profesor = PositivoProfesores.Id_Profesor)";
-                    break ;
+                    break;
                 case 7:
                     query = @"SELECT
                     PositivoAlumnos.Id_PositivoAlumno,
@@ -150,6 +150,23 @@ namespace ClassCapaNegocio
                     INNER JOIN NivelRiesgos ON (NivelRiesgos.Id_NivelRiesgo = PositivoAlumnos.Id_NivelRiesgo)
                     INNER JOIN Comprobaciones ON (Comprobaciones.Id_Comprobacion = PositivoAlumnos.Id_Comprobacion)
                     INNER JOIN Alumnos ON (Alumnos.Id_Alumno = PositivoAlumnos.Id_Alumno)";
+                    break;
+                case 8:
+                    query = @"SELECT
+                    SeguimientoAlumnos.Id_SeguimientoAlumno,
+                    SeguimientoAlumnos.Entrevista,
+                    SeguimientoAlumnos.Comunicacion,
+                    SeguimientoAlumnos.Reporte,
+                    SeguimientoAlumnos.FechaSeguimiento,
+                    CONCAT(Alumnos.Nombre + ' ', Alumnos.Paterno + ' ' + Alumnos.Materno) AS 'Nombre Alumno',
+                    CONCAT(Medicos.Nombre + ' ', Medicos.Paterno + ' ' + Medicos.Materno) AS 'Nombre Medico',
+                    Alumnos.Celular,
+                    Medicos.Especialidad
+                    FROM SeguimientoAlumnos
+                    INNER JOIN Medicos ON(Medicos.Id_Medicos = SeguimientoAlumnos.Id_Medicos)
+                    INNER JOIN PositivoAlumnos ON (PositivoAlumnos.Id_PositivoAlumno = SeguimientoAlumnos.Id_PositivoAlumno)
+                    INNER JOIN Alumnos ON(Alumnos.Id_Alumno = PositivoAlumnos.Id_Alumno)
+                    ";
                     break;
                 default:
                     query = "";
@@ -515,6 +532,53 @@ namespace ClassCapaNegocio
             return bl.modification(query, ref message, listParameter);
         }
 
-       
+        public Boolean CreateSeguimientoAlumno(SeguimientoAlumno nuevo)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@fecha", nuevo.FechaSeguimiento));
+            listParameter.Add(new SqlParameter("@comunicacion", nuevo.cumunicacion));
+            listParameter.Add(new SqlParameter("@reporte", nuevo.Reporte));
+            listParameter.Add(new SqlParameter("@idmedico", nuevo.IdMedico));
+            listParameter.Add(new SqlParameter("@idpositivo", nuevo.IdPositivoalumno));
+            listParameter.Add(new SqlParameter("@entrevista", nuevo.Entrevista));
+
+            string message = "";
+            string query = @"INSERT INTO SeguimientoAlumnos(FechaSeguimiento, Comunicacion, Reporte, Entrevista, Id_Medicos, Id_PositivoAlumno)
+            VALUES (@fecha, @comunicacion, @reporte, @entrevista, @idmedico, @idpositivo)";
+            return bl.modification(query, ref message, listParameter);
+        }
+        public DataTable GetSeguimientoAlumno(int id)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = @"
+            SELECT
+            SeguimientoAlumnos.Id_SeguimientoAlumno,
+            SeguimientoAlumnos.Entrevista,
+            SeguimientoAlumnos.Comunicacion,
+            SeguimientoAlumnos.Reporte,
+            SeguimientoAlumnos.FechaSeguimiento,
+            CONCAT(Alumnos.Nombre + ' ', Alumnos.Paterno + ' ' + Alumnos.Materno) AS 'Nombre Alumno',
+            CONCAT(Medicos.Nombre + ' ', Medicos.Paterno + ' ' + Medicos.Materno) AS 'Nombre Medico',
+            Alumnos.Celular,
+            Medicos.Especialidad
+            FROM SeguimientoAlumnos
+            INNER JOIN Medicos ON(Medicos.Id_Medicos = SeguimientoAlumnos.Id_Medicos)
+            INNER JOIN PositivoAlumnos ON (PositivoAlumnos.Id_PositivoAlumno = SeguimientoAlumnos.Id_PositivoAlumno)
+            INNER JOIN Alumnos ON(Alumnos.Id_Alumno = PositivoAlumnos.Id_Alumno)
+            WHERE SeguimientoAlumnos.Id_SeguimientoAlumno = @id";
+            string message = "";
+            return bl.QueryDataTable(query, ref message, listParameter);
+        }
+        public Boolean DeleteSeguimientoAlumno(int id)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@id", id));
+            string query = @"
+                DELETE FROM SeguimientoAlumnos WHERE Id_SeguimientoAlumno = @id
+            ";
+            string mesage = "";
+            return bl.modification(query, ref mesage, listParameter);
+        }
     }
 }

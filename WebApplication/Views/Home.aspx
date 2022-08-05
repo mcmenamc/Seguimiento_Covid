@@ -57,15 +57,27 @@
                 </a>
                 <a href="PositivoProfesor.aspx" class="group">
                     <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                        <img src="../images/tecnico.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
+                        <img src="../images/PositivoProfe.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
                     </div>
                     <p class="mt-1 text-lg font-medium text-gray-900">Positivo Profesor</p>
                 </a>
                 <a href="PositivoAlumno.aspx" class="group">
                     <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                        <img src="../images/tecnico.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
+                        <img src="../images/PositivoAlumno.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
                     </div>
                     <p class="mt-1 text-lg font-medium text-gray-900">Positivo Alumno</p>
+                </a>
+                <a href="SeguimientoAlumno.aspx" class="group">
+                    <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+                        <img src="../images/seguimientoAlumno.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
+                    </div>
+                    <p class="mt-1 text-lg font-medium text-gray-900">Seguimiento Alumno</p>
+                </a>
+                <a href="SeguimientoProfesor.aspx" class="group">
+                    <div class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
+                        <img src="../images/seguimientoProfesor.png" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="w-full h-full object-center object-cover group-hover:opacity-75">
+                    </div>
+                    <p class="mt-1 text-lg font-medium text-gray-900">Seguimiento Profesor</p>
                 </a>
             </div>
         </div>

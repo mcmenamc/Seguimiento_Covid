@@ -51,7 +51,7 @@
     <Compile Include="ProfeGRupo.cs" />
     <Compile Include="Profesor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeguimientoAL.cs" />
+    <Compile Include="SeguimientoAlumno.cs" />
     <Compile Include="SeguimientoPRO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

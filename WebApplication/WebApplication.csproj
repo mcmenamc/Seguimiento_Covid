@@ -75,7 +75,11 @@
     <Content Include="images\logo.png" />
     <Content Include="images\medico.png" />
     <Content Include="images\pareja.png" />
+    <Content Include="images\PositivoAlumno.png" />
+    <Content Include="images\PositivoProfe.png" />
     <Content Include="images\profesores.png" />
+    <Content Include="images\seguimientoAlumno.png" />
+    <Content Include="images\seguimientoProfesor.png" />
     <Content Include="images\tecnico.png" />
     <Content Include="Views\AlumnoGrupo.aspx" />
     <Content Include="Views\Alumnos.aspx" />
@@ -87,6 +91,8 @@
     <Content Include="Views\PositivoProfesor.aspx" />
     <Content Include="Views\Profesores.aspx" />
     <Content Include="Views\ProgramaEducativo.aspx" />
+    <Content Include="Views\SeguimientoAlumno.aspx" />
+    <Content Include="Views\SeguimientoProfesor.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +173,20 @@
     </Compile>
     <Compile Include="Views\ProgramaEducativo.aspx.designer.cs">
       <DependentUpon>ProgramaEducativo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SeguimientoAlumno.aspx.cs">
+      <DependentUpon>SeguimientoAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SeguimientoAlumno.aspx.designer.cs">
+      <DependentUpon>SeguimientoAlumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SeguimientoProfesor.aspx.cs">
+      <DependentUpon>SeguimientoProfesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\SeguimientoProfesor.aspx.designer.cs">
+      <DependentUpon>SeguimientoProfesor.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
