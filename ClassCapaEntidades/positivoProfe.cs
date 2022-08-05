@@ -10,12 +10,11 @@ namespace ClassCapaEntidades
     {
         public int Id_posProfe { get; set; }
         public string FechaConfirmado { get; set; }
-        public string Comprobacion { get; set; }
         public string Antecedentes { get; set; }
-        public string Riesgo { get; set; }
         public int NumContaio { get; set; }
-        public string Extra { get; set; }
-        public int F_Profe { get; set; }
         public string prueba_covid { get; set; }
+        public int id_nivel_riesgo { get; set; }
+        public int id_profesor { get; set; }
+        public int id_comprobacion { get; set; }
     }
 }

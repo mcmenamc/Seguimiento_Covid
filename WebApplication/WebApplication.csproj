@@ -83,6 +83,8 @@
     <Content Include="Views\GrupoCuatrimestre.aspx" />
     <Content Include="Views\Home.aspx" />
     <Content Include="Views\Medicos.aspx" />
+    <Content Include="Views\PositivoAlumno.aspx" />
+    <Content Include="Views\PositivoProfesor.aspx" />
     <Content Include="Views\Profesores.aspx" />
     <Content Include="Views\ProgramaEducativo.aspx" />
     <Content Include="Web.config" />
@@ -137,6 +139,20 @@
     </Compile>
     <Compile Include="Views\Medicos.aspx.designer.cs">
       <DependentUpon>Medicos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PositivoAlumno.aspx.cs">
+      <DependentUpon>PositivoAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\PositivoAlumno.aspx.designer.cs">
+      <DependentUpon>PositivoAlumno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PositivoProfesor.aspx.cs">
+      <DependentUpon>PositivoProfesor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\PositivoProfesor.aspx.designer.cs">
+      <DependentUpon>PositivoProfesor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Profesores.aspx.cs">
       <DependentUpon>Profesores.aspx</DependentUpon>

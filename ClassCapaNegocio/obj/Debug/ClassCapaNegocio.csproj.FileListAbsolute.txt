@@ -9,3 +9,14 @@ C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\obj\Debug\ClassCa
 C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\obj\Debug\ClassCapaNegocio.pdb
 C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\bin\Debug\ClassCapaEntidades.dll
 C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\bin\Debug\ClassCapaEntidades.pdb
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\bin\Debug\ClassCapaNegocio.dll
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\bin\Debug\ClassCapaNegocio.pdb
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\bin\Debug\ClassCapaEntidades.dll
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\bin\Debug\ClasscCapaDatos.dll
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\bin\Debug\ClassCapaEntidades.pdb
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\bin\Debug\ClasscCapaDatos.pdb
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\obj\Debug\ClassCapaNegocio.csproj.AssemblyReference.cache
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\obj\Debug\ClassCapaNegocio.csproj.CoreCompileInputs.cache
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\obj\Debug\ClassCapaNegocio.csproj.CopyComplete
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\obj\Debug\ClassCapaNegocio.dll
+C:\Users\julio\Documents\Mena\Seguimiento_Covid\ClassCapaNegocio\obj\Debug\ClassCapaNegocio.pdb
