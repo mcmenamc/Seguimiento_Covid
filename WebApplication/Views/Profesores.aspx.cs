@@ -20,10 +20,11 @@ namespace WebApplication.Views
 
             toast.Visible = false;
             Datos.Visible = false;
+            seguimieto.Visible = false;
             if (!IsPostBack)
             {
 
-
+                TextBox1.Text = "122";
                 DropDownListCuatri.Items.Clear();
                 DropDownListCuatri.Items.Add(new ListItem()
                 {
@@ -195,19 +196,28 @@ namespace WebApplication.Views
 
         protected void Button4_Click(object sender, EventArgs e)
         {
-            int id = Int32.Parse(idProfesorE.Text);
-            Boolean result = false;
-            result = bl.DeleteProfesor(id);
-            if (result)
+            try
+            {
+                int id = Int32.Parse(idProfesorE.Text);
+                Boolean result = false;
+                result = bl.DeleteProfesor(id);
+                if (result)
+                {
+                    toast.Visible = true;
+                    Lmessage.Text = "Profesor eliminado correctamente.";
+                }
+                else
+                {
+                    toast.Visible = true;
+                    Lmessage.Text = "Error al eliminar el profesor.";
+                }
+            }
+            catch (Exception ex)
             {
                 toast.Visible = true;
-                Lmessage.Text = "Profesor eliminado correctamente.";
+                Lmessage.Text = "Error " + ex.Message;
             }
-            else
-            {
-                toast.Visible = true;
-                Lmessage.Text = "Error al eliminar el profesor.";
-            }
+
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -238,6 +248,39 @@ namespace WebApplication.Views
                     toast.Visible = true;
                     Lmessage.Text = "Profesor no encontrado.";
 
+                }
+            }
+            catch (Exception ex)
+            {
+                toast.Visible = true;
+                Lmessage.Text = ex.Message;
+            }
+
+        }
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            DataTable find = new DataTable();
+            try
+            {
+                find = bl.GetSeguimientoProfesor(Convert.ToInt32(TextBox1.Text));
+                if (find.Rows.Count > 0)
+                {
+                    seguimieto.Visible = true;
+                    toast.Visible = true;
+                    Lmessage.Text = "Profesor encontrado.";
+                    SCompledo.Text = find.Rows[0]["Nombre Completo"].ToString();
+                    Veces_Contagiadas.Text = find.Rows[0]["Veces Contagiadas"].ToString();
+                    scorreo.Text = find.Rows[0]["Correo"].ToString();
+                    sCelular.Text = find.Rows[0]["Celular"].ToString();
+                    scorreo.Text = find.Rows[0]["Correo"].ToString();
+                    Image1.ImageUrl = "../Images/Comprobante/" + find.Rows[0]["Comprobante"].ToString();
+                    sGenero.Text = find.Rows[0]["Genero"].ToString();
+                }
+                else
+                {
+                    seguimieto.Visible = false;
+                    toast.Visible = true;
+                    Lmessage.Text = "Profesor no encontrado.";
                 }
             }
             catch (Exception ex)

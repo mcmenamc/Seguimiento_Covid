@@ -52,7 +52,7 @@ namespace ClassCapaNegocio
                 case 1:
                     query = @"SELECT
                     Alumnos.Id_Alumno,
-                    Alumnos.Materno as 'MATRICULA',
+                    Alumnos.Matricula as 'Matricula',
                     CONCAT(Alumnos.Nombre + '' , Alumnos.Paterno + '' , Alumnos.Materno) AS 'Nombre Completo',
                     Alumnos.Genero,
                     Alumnos.Correo,
@@ -123,18 +123,13 @@ namespace ClassCapaNegocio
                     break;
                 case 6:
                     query = @"SELECT
-                    PositivoProfesores.Id_PositivoProfesor,
-                    Profesores.Nombre,
-                    Profesores.Paterno,
-                    Profesores.Materno,
-                    Profesores.RegistroEmpleado,
-                    Comprobaciones.Nombre,
-                    NivelRiesgos.Nombre,
-                    NivelRiesgos.Descipcion,
-                    PositivoProfesores.FechaContagio,
+                    PositivoProfesores.Id_PositivoProfesor AS 'Id',
+                    Concat(Profesores.Nombre + ' ', Profesores.Paterno + ' ', Profesores.Materno) AS 'Nombre Completo',
+                    Comprobaciones.Nombre AS Comprobación,
+                    NivelRiesgos.Nombre AS 'Nivel Riesgo',
+                    PositivoProfesores.FechaContagio AS 'Fecha Contagio',
                     PositivoProfesores.Antecedentes,
-                    PositivoProfesores.NumeroContagios,
-                    PositivoProfesores.PruebaContagio
+                    PositivoProfesores.NumeroContagios AS 'Numero de Contagios'
                     FROM PositivoProfesores
                     INNER JOIN NivelRiesgos ON (NivelRiesgos.Id_NivelRiesgo = PositivoProfesores.Id_NivelRiesgo)
                     INNER JOIN Comprobaciones ON (Comprobaciones.Id_Comprobacion = PositivoProfesores.Id_Comprobacion)
@@ -143,16 +138,12 @@ namespace ClassCapaNegocio
                 case 7:
                     query = @"SELECT
                     PositivoAlumnos.Id_PositivoAlumno,
-                    Alumnos.Nombre,
-                    Alumnos.Paterno,
-                    Alumnos.Materno,
-                    Alumnos.Matricula,
+                    CONCAT(Alumnos.Nombre + ' ', Alumnos.Paterno + ' ', Alumnos.Materno) AS 'Nombre Completo',
                     Comprobaciones.Nombre AS 'Comprobación',
-                    NivelRiesgos.Nombre AS 'RIESGO',
-                    NivelRiesgos.Descipcion,
-                    PositivoAlumnos.FechaContagio,
+                    NivelRiesgos.Nombre AS 'Riesgo',
+                    PositivoAlumnos.FechaContagio AS 'Fecha Contagio',
                     PositivoAlumnos.Antecedentes,
-                    PositivoAlumnos.NumeroContagios,
+                    PositivoAlumnos.NumeroContagios AS '# Contagio',
                     PositivoAlumnos.PruebaContagio
                     FROM PositivoAlumnos
                     INNER JOIN NivelRiesgos ON (NivelRiesgos.Id_NivelRiesgo = PositivoAlumnos.Id_NivelRiesgo)
@@ -358,7 +349,6 @@ namespace ClassCapaNegocio
             listParameter.Add(new SqlParameter("@inicio", nuevo.Inicio));
             listParameter.Add(new SqlParameter("@fin", nuevo.Fin));
             listParameter.Add(new SqlParameter("@anio", nuevo.Anio));
-            string message = "";
             string query = @"INSERT INTO Cuatrimestres(Periodo, Inicio, Fin, Anio)
             VALUES (@periodo, @inicio, @fin, @anio)";
 
@@ -471,7 +461,6 @@ namespace ClassCapaNegocio
             Profesores.RegistroEmpleado,
             Comprobaciones.Nombre AS 'Comprobación',
             NivelRiesgos.Nombre AS 'Riesgos',
-            NivelRiesgos.Descipcion,
             PositivoProfesores.FechaContagio,
             PositivoProfesores.Antecedentes,
             PositivoProfesores.NumeroContagios,
@@ -640,6 +629,102 @@ namespace ClassCapaNegocio
             ";
             string mesage = "";
             return bl.modification(query, ref mesage, listParameter);
+        }
+
+        public DataTable GetAlumnosContagiados(int educativo, int cuatri, int grupo)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@educativo", educativo));
+            listParameter.Add(new SqlParameter("@cuatri", cuatri));
+            listParameter.Add(new SqlParameter("@grupo", grupo));
+
+            string message = "";
+            string query = @"SELECT
+            MAX(Alumnos.Id_Alumno) AS 'Id_Profesor',
+            MAX(PositivoAlumnos.Id_Alumno) AS Id_PositivoProfesor,
+            CONCAT(MAX(Alumnos.Nombre) + ' ', MAX(Alumnos.Paterno) + ' ', MAX(Alumnos.Materno)) AS 'Nombre Completo',
+            MAX(Alumnos.Genero) AS Genero,
+            MAX(Alumnos.Correo) AS Correo,
+            MAX(PositivoAlumnos.FechaContagio) AS  'Fecha de Contagio' ,
+            AVG(PositivoAlumnos.NumeroContagios) AS 'Veces Contagiadas',
+            MAX(GrupoCuatrimestres.Turno) AS 'Turno'
+            FROM Alumnos
+            INNER JOIN PositivoAlumnos ON(Alumnos.Id_Alumno = PositivoAlumnos.Id_Alumno)
+            INNER JOIN AlumnosGrupo ON(AlumnosGrupo.Id_Alumno = Alumnos.Id_Alumno)
+            INNER JOIN GrupoCuatrimestres ON(GrupoCuatrimestres.Id_Cuatrimestre = AlumnosGrupo.Id_AlumnoGrupo)
+            INNER JOIN Cuatrimestres ON(Cuatrimestres.Id_Cuatrimestre = GrupoCuatrimestres.Id_Cuatrimestre)
+            INNER JOIN ProgramaEducativos ON(ProgramaEducativos.Id_programaEducativo = GrupoCuatrimestres.Id_programaEducativo)
+            INNER JOIN Grupos ON(Grupos.Id_Grupo = GrupoCuatrimestres.Id_Grupo)
+            WHERE ProgramaEducativos.Id_programaEducativo = @educativo AND Cuatrimestres.Id_Cuatrimestre = @cuatri AND Grupos.Id_Grupo = @grupo
+            GROUP BY Alumnos.Id_Alumno";
+            return bl.QueryDataTable(query, ref message, listParameter);
+        }
+        public DataTable GetAlumnosSeguimientoCovid(int cuatri)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@cuatri", cuatri));
+            string message = "";
+            string query = @"SELECT 
+            CONCAT(Alumnos.Nombre + ' ', Alumnos.Paterno + ' ', Alumnos.Materno) AS 'Nombre Completo',
+            Alumnos.Genero AS Genero,
+            Alumnos.Correo AS Correo,
+            Alumnos.Correo AS Correo,
+            PositivoAlumnos.FechaContagio AS  'Fecha de Contagio' ,
+            PositivoAlumnos.NumeroContagios AS 'Veces Contagiadas',
+            Cuatrimestres.Id_Cuatrimestre
+            FROM SeguimientoAlumnos
+            INNER JOIN PositivoAlumnos ON(PositivoAlumnos.Id_PositivoAlumno = SeguimientoAlumnos.Id_PositivoAlumno)
+            INNER JOIN Alumnos ON(Alumnos.Id_Alumno = PositivoAlumnos.Id_Alumno)
+            INNER JOIN AlumnosGrupo ON(AlumnosGrupo.Id_Alumno = Alumnos.Id_Alumno)
+            INNER JOIN GrupoCuatrimestres ON(GrupoCuatrimestres.Id_Cuatrimestre = AlumnosGrupo.Id_AlumnoGrupo)
+            INNER JOIN Cuatrimestres ON(Cuatrimestres.Id_Cuatrimestre = GrupoCuatrimestres.Id_Cuatrimestre)
+            WHERE Cuatrimestres.Id_Cuatrimestre = @cuatri;
+            ";
+            return bl.QueryDataTable(query, ref message, listParameter);
+        }
+        public DataTable GetAlumnosSeguimientoCovid(int cuatri, string matri)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@cuatri", cuatri));
+            listParameter.Add(new SqlParameter("@matri", matri));
+            string message = "";
+            string query = @"SELECT 
+            CONCAT(Alumnos.Nombre + ' ', Alumnos.Paterno + ' ', Alumnos.Materno) AS 'Nombre Completo',
+            Alumnos.Genero AS Genero,
+            Alumnos.Correo AS Correo,
+            Alumnos.Correo AS Correo,
+            PositivoAlumnos.FechaContagio AS  'Fecha de Contagio' ,
+            PositivoAlumnos.NumeroContagios AS 'Veces Contagiadas',
+            Cuatrimestres.Id_Cuatrimestre
+            FROM SeguimientoAlumnos
+            INNER JOIN PositivoAlumnos ON(PositivoAlumnos.Id_PositivoAlumno = SeguimientoAlumnos.Id_PositivoAlumno)
+            INNER JOIN Alumnos ON(Alumnos.Id_Alumno = PositivoAlumnos.Id_Alumno)
+            INNER JOIN AlumnosGrupo ON(AlumnosGrupo.Id_Alumno = Alumnos.Id_Alumno)
+            INNER JOIN GrupoCuatrimestres ON(GrupoCuatrimestres.Id_Cuatrimestre = AlumnosGrupo.Id_AlumnoGrupo)
+            INNER JOIN Cuatrimestres ON(Cuatrimestres.Id_Cuatrimestre = GrupoCuatrimestres.Id_Cuatrimestre)
+            WHERE Cuatrimestres.Id_Cuatrimestre = @cuatri AND Alumnos.Matricula = @matri;
+            ";
+            return bl.QueryDataTable(query, ref message, listParameter);
+        }
+        public DataTable GetSeguimientoProfesor(int registro)
+        {
+            List<SqlParameter> listParameter = new List<SqlParameter>();
+            listParameter.Add(new SqlParameter("@registro", registro));
+            string message = "";
+            string query = @"SELECT 
+            CONCAT(Profesores.Nombre + ' ', Profesores.Paterno + ' ', Profesores.Materno) AS 'Nombre Completo',
+            Profesores.Genero AS Genero,
+            Profesores.Correo AS Correo,
+            Profesores.Celular AS Celular,
+            PositivoProfesores.FechaContagio AS  'Fecha de Contagio' ,
+            PositivoProfesores.NumeroContagios AS 'Veces Contagiadas',
+            PositivoProfesores.PruebaContagio as 'Comprobante'
+            FROM SeguimientoProfesores
+            INNER JOIN PositivoProfesores ON(PositivoProfesores.Id_PositivoProfesor = SeguimientoProfesores.Id_PositivoProfesor)
+            INNER JOIN Profesores ON(Profesores.Id_Profesor = PositivoProfesores.Id_Profesor)
+            WHERE  Profesores.RegistroEmpleado = @registro
+            ";
+            return bl.QueryDataTable(query, ref message, listParameter);
         }
     }
 }

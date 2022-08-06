@@ -71,42 +71,57 @@ namespace WebApplication.Views
 
         protected void Button3_Click(object sender, EventArgs e)
         {
-            Boolean result = false;
-            if (DropDownListAlumno.SelectedIndex == 0 || DropDownListRiesgo.SelectedIndex == 0 || DropDownListComprobacion.SelectedIndex == 0)
+            try
             {
-                toast.Visible = true;
-                Lmessage.Text = "Seleccione las opcones.";
-            }
-            else
-            {
-                try
+                Boolean result = false;
+                if (DropDownListAlumno.SelectedIndex == 0 || DropDownListRiesgo.SelectedIndex == 0 || DropDownListComprobacion.SelectedIndex == 0)
                 {
-                    result = bl.CreatePositivoAlumno(new ClassCapaEntidades.PositivoAlumno()
+                    toast.Visible = true;
+                    Lmessage.Text = "Seleccione las opcones.";
+                }
+                else
+                {
+                    if (PruebaContagio.HasFile)
                     {
-                        Id_NivelRiesgo = Convert.ToInt32(DropDownListRiesgo.SelectedValue),
-                        Id_Alumno = Convert.ToInt32(DropDownListAlumno.SelectedValue),
-                        Id_Comprobacion = Convert.ToInt32(DropDownListComprobacion.SelectedValue),
-                        FechaConfirmado = FechaContagio.Text,
-                        Antecedentes = TextBoxAntecedentes.Text,
-                        NumContagio = Convert.ToInt32(TextBoxNumeroContagio.Text),
-                        PruebaContagio = PruebaContagio.FileName,
-                    });
-                    if (result)
-                    {
-                        toast.Visible = true;
-                        Lmessage.Text = "Positivo Alumno creado correctamente.";
+                        string cadenaAleatoria = string.Empty;
+                        cadenaAleatoria = Guid.NewGuid().ToString();
+
+                        string nombre = Server.MapPath(Request.ApplicationPath + "Images/Comprobante/" + cadenaAleatoria + PruebaContagio.FileName);
+                        PruebaContagio.SaveAs(nombre);
+
+                        result = bl.CreatePositivoAlumno(new ClassCapaEntidades.PositivoAlumno()
+                        {
+                            Id_NivelRiesgo = Convert.ToInt32(DropDownListRiesgo.SelectedValue),
+                            Id_Alumno = Convert.ToInt32(DropDownListAlumno.SelectedValue),
+                            Id_Comprobacion = Convert.ToInt32(DropDownListComprobacion.SelectedValue),
+                            FechaConfirmado = FechaContagio.Text,
+                            Antecedentes = TextBoxAntecedentes.Text,
+                            NumContagio = Convert.ToInt32(TextBoxNumeroContagio.Text),
+                            PruebaContagio = cadenaAleatoria + PruebaContagio.FileName,
+                        });
+                        if (result)
+                        {
+                            toast.Visible = true;
+                            Lmessage.Text = "Positivo Alumno creado correctamente.";
+                        }
+                        else
+                        {
+                            toast.Visible = true;
+                            Lmessage.Text = "Error al crear el Positivo Alumno.";
+                        }
                     }
                     else
                     {
                         toast.Visible = true;
-                        Lmessage.Text = "Error al crear el Positivo Alumno.";
+                        Lmessage.Text = "Seleccione un archivo.";
                     }
+
                 }
-                catch (Exception EX)
-                {
-                    toast.Visible = true;
-                    Lmessage.Text = EX.Message;
-                }
+            }
+            catch (Exception EX)
+            {
+                toast.Visible = true;
+                Lmessage.Text = EX.Message;
             }
             ShowGridView();
         }
@@ -127,6 +142,7 @@ namespace WebApplication.Views
                     Num_contagio.Text = find.Rows[0]["NumeroContagios"].ToString();
                     NombreRiesgo.Text = find.Rows[0]["RIESGO"].ToString();
                     NomComprobacion.Text = find.Rows[0]["Comprobación"].ToString();
+                    Image1.ImageUrl = "../Images/Comprobante/" + find.Rows[0]["PruebaContagio"].ToString();
                 }
                 else
                 {

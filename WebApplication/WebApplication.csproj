@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Css\main.css" />
     <Content Include="images\carrera.png" />
+    <Content Include="images\Comprobante\comprobante-vacunacion.jpg" />
     <Content Include="images\cuatrimestre.png" />
     <Content Include="images\estudiante.png" />
     <Content Include="images\favicon.ico" />
@@ -96,11 +97,11 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Page.Master.cs">
+    <Compile Include="Views\Page.Master.cs">
       <DependentUpon>Page.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Page.Master.designer.cs">
+    <Compile Include="Views\Page.Master.designer.cs">
       <DependentUpon>Page.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -192,7 +193,7 @@
   <ItemGroup>
     <Content Include="images\loader.gif" />
     <None Include="packages.config" />
-    <Content Include="Page.Master" />
+    <Content Include="Views\Page.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

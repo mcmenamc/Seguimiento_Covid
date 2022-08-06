@@ -51,9 +51,9 @@ namespace WebApplication.Views
                         Value = dr["Id_Comprobacion"].ToString(),
                         Text = dr["Nombre"].ToString(),
                     });
-               
+
             }
-            
+
         }
         public void ShowGridView()
         {
@@ -80,27 +80,42 @@ namespace WebApplication.Views
             {
                 try
                 {
-                    result = bl.CreatePositivoProfesor(new ClassCapaEntidades.positivoProfe()
+                    if (PruebaContagio.HasFile)
                     {
-                        id_nivel_riesgo = Convert.ToInt32(DropDownListRiesgo.SelectedValue),
-                        id_profesor = Convert.ToInt32(DropDownListProfesor.SelectedValue),
-                        id_comprobacion = Convert.ToInt32(DropDownListComprobacion.SelectedValue),
-                        FechaConfirmado = FechaContagio.Text,
-                        Antecedentes = TextBoxAntecedentes.Text,
-                        NumContaio = Convert.ToInt32(TextBoxNumeroContagio.Text),
-                        prueba_covid = PruebaContagio.FileName,
-                        
-                    });
-                    if (result)
-                    {
-                        toast.Visible = true;
-                        Lmessage.Text = "Positivo Profesor creado correctamente.";
+                        string cadenaAleatoria = string.Empty;
+                        cadenaAleatoria = Guid.NewGuid().ToString();
+
+                        string nombre = Server.MapPath(Request.ApplicationPath + "Images/Comprobante/" + cadenaAleatoria + PruebaContagio.FileName);
+                        PruebaContagio.SaveAs(nombre);
+
+                        result = bl.CreatePositivoProfesor(new ClassCapaEntidades.positivoProfe()
+                        {
+                            id_nivel_riesgo = Convert.ToInt32(DropDownListRiesgo.SelectedValue),
+                            id_profesor = Convert.ToInt32(DropDownListProfesor.SelectedValue),
+                            id_comprobacion = Convert.ToInt32(DropDownListComprobacion.SelectedValue),
+                            FechaConfirmado = FechaContagio.Text,
+                            Antecedentes = TextBoxAntecedentes.Text,
+                            NumContaio = Convert.ToInt32(TextBoxNumeroContagio.Text),
+                            prueba_covid = cadenaAleatoria + PruebaContagio.FileName,
+                        });
+                        if (result)
+                        {
+                            toast.Visible = true;
+                            Lmessage.Text = "Positivo Profesor creado correctamente.";
+                        }
+                        else
+                        {
+                            toast.Visible = true;
+                            Lmessage.Text = "Error al crear el Positivo Profesor.";
+                        }
                     }
                     else
                     {
                         toast.Visible = true;
-                        Lmessage.Text = "Error al crear el Positivo Profesor.";
+                        Lmessage.Text = "Sube un archivo.";
+
                     }
+                  
                 }
                 catch (Exception EX)
                 {
@@ -122,11 +137,12 @@ namespace WebApplication.Views
                     toast.Visible = true;
                     Lmessage.Text = "Profe Positivo encontrado.";
                     id.Text = find.Rows[0]["Id_PositivoProfesor"].ToString();
-                    Nombre_Completo.Text = find.Rows[0]["Nombre"].ToString() + " " +find.Rows[0]["Paterno"] + " " + find.Rows[0]["Materno"];
+                    Nombre_Completo.Text = find.Rows[0]["Nombre"].ToString() + " " + find.Rows[0]["Paterno"] + " " + find.Rows[0]["Materno"];
                     Fecha_Contagio.Text = find.Rows[0]["FechaContagio"].ToString();
                     Num_contagio.Text = find.Rows[0]["NumeroContagios"].ToString();
                     NombreRiesgo.Text = find.Rows[0]["Riesgos"].ToString();
                     NomComprobacion.Text = find.Rows[0]["Comprobación"].ToString();
+                    Image1.ImageUrl = "../Images/Comprobante/" + find.Rows[0]["PruebaContagio"].ToString();
                 }
                 else
                 {

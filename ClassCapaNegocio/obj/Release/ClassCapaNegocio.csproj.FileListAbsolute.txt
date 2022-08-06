@@ -1,0 +1,11 @@
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\bin\Release\ClassCapaNegocio.dll
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\bin\Release\ClassCapaNegocio.pdb
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\bin\Release\ClassCapaEntidades.dll
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\bin\Release\ClasscCapaDatos.dll
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\bin\Release\ClassCapaEntidades.pdb
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\bin\Release\ClasscCapaDatos.pdb
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\obj\Release\ClassCapaNegocio.csproj.AssemblyReference.cache
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\obj\Release\ClassCapaNegocio.csproj.CoreCompileInputs.cache
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\obj\Release\ClassCapaNegocio.csproj.CopyComplete
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\obj\Release\ClassCapaNegocio.dll
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaNegocio\obj\Release\ClassCapaNegocio.pdb

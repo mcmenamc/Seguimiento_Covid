@@ -1,0 +1,6 @@
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClasscCapaDatos\bin\Release\ClasscCapaDatos.dll
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClasscCapaDatos\bin\Release\ClasscCapaDatos.pdb
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClasscCapaDatos\obj\Release\ClasscCapaDatos.csproj.AssemblyReference.cache
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClasscCapaDatos\obj\Release\ClasscCapaDatos.csproj.CoreCompileInputs.cache
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClasscCapaDatos\obj\Release\ClasscCapaDatos.dll
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClasscCapaDatos\obj\Release\ClasscCapaDatos.pdb

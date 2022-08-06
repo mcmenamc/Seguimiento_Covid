@@ -1,0 +1,6 @@
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaEntidades\bin\Release\ClassCapaEntidades.dll
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaEntidades\bin\Release\ClassCapaEntidades.pdb
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaEntidades\obj\Release\ClassCapaEntidades.csproj.AssemblyReference.cache
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaEntidades\obj\Release\ClassCapaEntidades.csproj.CoreCompileInputs.cache
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaEntidades\obj\Release\ClassCapaEntidades.dll
+C:\Users\mcmen\source\repos\Seguimiento Covid\ClassCapaEntidades\obj\Release\ClassCapaEntidades.pdb

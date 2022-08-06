@@ -19,10 +19,37 @@ namespace WebApplication.Views
             Datos.Visible = false;
             if (!IsPostBack)
             {
+                DataSet data = bl.GetCatalogos();
 
+                DropDownListGrupo.Items.Clear();
+                DropDownListGrupo.Items.Add(new ListItem()
+                {
+                    Text = "Seleccione un Grupo",
+                    Value = "0"
+                });
+                foreach (DataRow dr in data.Tables[2].Rows)
+                {
+                    DropDownListGrupo.Items.Add(new ListItem()
+                    {
+                        Text = dr[1].ToString() + " - " + dr[2].ToString(),
+                        Value = dr[0].ToString()
+                    });
+                }
 
                 DropDownListCuatri.Items.Clear();
                 DropDownListCuatri.Items.Add(new ListItem()
+                {
+                    Text = "Seleccione un Cuatrimestre",
+                    Value = "0"
+                });
+                DropDownListCuatri2.Items.Clear();
+                DropDownListCuatri2.Items.Add(new ListItem()
+                {
+                    Text = "Seleccione un Cuatrimestre",
+                    Value = "0"
+                });
+                DropDownListCuatri3.Items.Clear();
+                DropDownListCuatri3.Items.Add(new ListItem()
                 {
                     Text = "Seleccione un Cuatrimestre",
                     Value = "0"
@@ -36,14 +63,26 @@ namespace WebApplication.Views
                 DropDownListGenero.Items.Clear();
                 DropDownListEstadoCivil.Items.Clear();
 
-                DataSet data = bl.GetCatalogos();
                 // Cuatrimestres
                 foreach (DataRow dr in data.Tables[1].Rows)
+                {
+
                     DropDownListCuatri.Items.Add(new ListItem()
                     {
                         Text = dr[1].ToString(),
                         Value = dr[0].ToString()
                     });
+                    DropDownListCuatri2.Items.Add(new ListItem()
+                    {
+                        Text = dr[1].ToString(),
+                        Value = dr[0].ToString()
+                    });
+                    DropDownListCuatri3.Items.Add(new ListItem()
+                    {
+                        Text = dr[1].ToString(),
+                        Value = dr[0].ToString()
+                    });
+                }
 
                 // Programa Educativo
                 foreach (DataRow dr in data.Tables[6].Rows)
@@ -160,12 +199,15 @@ namespace WebApplication.Views
                             Lmessage.Text = "Error al crear el Alumno.";
                         }
                     }
+
                 }
                 catch (Exception EX)
                 {
                     toast.Visible = true;
                     Lmessage.Text = EX.Message;
                 }
+                ShowGridView();
+                
             }
         }
         protected void Button5_Click(object Sender, EventArgs e)
@@ -216,6 +258,74 @@ namespace WebApplication.Views
                 toast.Visible = true;
                 Lmessage.Text = "Error al eliminar el Alumno.";
             }
+
+            ShowGridView();
+        }
+        protected void Button6_Click(object Sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            if (DropDownListCuatri.SelectedValue == "0" || DropDownListPrograma.SelectedValue == "0" || DropDownListGrupo.SelectedValue == "0")
+            {
+                Lmessage.Text = "Seleccione una opción.";
+                toast.Visible = true;
+            }
+            else
+            {
+                table = bl.GetAlumnosContagiados(Convert.ToInt16(DropDownListCuatri.SelectedValue), Convert.ToInt16(DropDownListPrograma.SelectedValue), Convert.ToInt16(DropDownListGrupo.SelectedValue));
+                if (table.Rows.Count > 0)
+                    toast.Visible = false;
+                else
+                {
+                    toast.Visible = true;
+                    Lmessage.Text = "Ningún elemento encontrado.";
+                }
+            }
+            GridView2.DataSource = table;
+            GridView2.DataBind();
+        }
+        protected void Button7_Click(object Sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            if (DropDownListCuatri2.SelectedIndex == 0)
+            {
+                Lmessage.Text = "Seleccione una opción.";
+                toast.Visible = true;
+            }
+            else
+            {
+                table = bl.GetAlumnosSeguimientoCovid(Convert.ToInt16(DropDownListCuatri2.SelectedValue));
+                if (table.Rows.Count > 0)
+                    toast.Visible = false;
+                else
+                {
+                    toast.Visible = true;
+                    Lmessage.Text = "Ningún elemento encontrado.";
+                }
+            }
+            GridView2.DataSource = table;
+            GridView2.DataBind();
+        }
+        protected void Button9_Click(object Sender, EventArgs e)
+        {
+            DataTable table = new DataTable();
+            if (DropDownListCuatri3.SelectedIndex == 0)
+            {
+                Lmessage.Text = "Seleccione una opción.";
+                toast.Visible = true;
+            }
+            else
+            {
+                table = bl.GetAlumnosSeguimientoCovid(Convert.ToInt16(DropDownListCuatri3.SelectedValue), TextBoxmatri.Text);
+                if (table.Rows.Count > 0)
+                    toast.Visible = false;
+                else
+                {
+                    toast.Visible = true;
+                    Lmessage.Text = "Ningún elemento encontrado.";
+                }
+            }
+            GridView2.DataSource = table;
+            GridView2.DataBind();
         }
     }
 }
